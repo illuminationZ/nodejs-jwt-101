@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "jwt-101",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
