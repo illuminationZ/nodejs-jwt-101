@@ -4,12 +4,14 @@ module.exports = function protectRoute(req, res, next) {
     const authHeader = req.headers.authorization;
 
     if (authHeader) {
+        // Extract token from "Bearer <token>"
         const token = authHeader.split(' ')[1];
         const decoded = verifyToken(token);
 
         if (decoded) {
+            // Attach decoded user info to request object
             req.user = decoded;
-            next();
+            next(); // Proceed to the next middleware or route handler
         } else {
             res.status(403).json({ message: 'Invalid token' });
         }
